@@ -97,7 +97,7 @@ define activemq::instance(
     
     file {"${install_path}/lib":
       ensure  => present,
-      source  => "puppet:///modules/activemq/web",
+      source  => "puppet:///modules/activemq/lib",
       recurse => true,
       owner   => 'activemq',
       group   => 'activemq',
