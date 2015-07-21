@@ -15,7 +15,7 @@
     </property>
   </bean>
 
-  <broker xmlns="http://activemq.apache.org/schema/core" brokerName="<%= @real_name %>-broker" useJmx="true" persistence="<%= @use_persistence -%>" >
+  <broker xmlns="http://activemq.apache.org/schema/core" brokerName="<%= @real_name %>-broker" useJmx="true" persistent="<%= @use_persistence -%>" >
     <destinationPolicy>
       <policyMap>
         <policyEntries>

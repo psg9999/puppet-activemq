@@ -52,22 +52,6 @@
                 <property name="resourceBase" value="<%= @install_path -%>/webapps/admin" />
                             <property name="logUrlOnStart" value="true" />
                         </bean>
-                        <bean class="org.eclipse.jetty.webapp.WebAppContext">
-                            <property name="contextPath" value="/camel" />
-                <property name="resourceBase" value="<%= @install_path -%>/webapps/camel" />
-                            <property name="logUrlOnStart" value="true" />
-                        </bean>
-                        <bean class="org.eclipse.jetty.webapp.WebAppContext">
-                            <property name="contextPath" value="/demo" />
-                <property name="resourceBase" value="<%= @install_path -%>/webapps/demo" />
-                            <property name="logUrlOnStart" value="true" />
-                        </bean>
-                        <bean class="org.eclipse.jetty.webapp.WebAppContext">
-                            <property name="contextPath" value="/fileserver" />
-                <property name="resourceBase" value="<%= @install_path -%>/webapps/fileserver" />
-                            <property name="logUrlOnStart" value="true" />
-                            <property name="parentLoaderPriority" value="true" />
-                        </bean>
                         <bean class="org.eclipse.jetty.server.handler.ResourceHandler">
                             <property name="directoriesListed" value="false" />
                             <property name="welcomeFiles">
