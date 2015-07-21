@@ -82,7 +82,7 @@ define activemq::instance(
     
     file {"${instance_path}/jetty-realm.properties":
       ensure  => present,
-      content => "puppet:///activemq/jetty-realm.properties",
+      content => "puppet:///modules/activemq/jetty-realm.properties",
       require => File[$instance_path],
     }
     
@@ -94,14 +94,14 @@ define activemq::instance(
     
     file {"${install_path}/lib/web":
       ensure  => present,
-      source  => "puppet:///activemq/web",
+      source  => "puppet:///modules/activemq/web",
       recurse => true,
       require => File[$install_path],
     }
     
     file {"${install_path}/webapps":
       ensure  => present,
-      source  => "puppet:///activemq/webapps",
+      source  => "puppet:///modules/activemq/webapps",
       recurse => true,
       require => File[$install_path],
     }  
