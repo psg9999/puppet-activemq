@@ -47,5 +47,6 @@ activemq::instance { 'myqueue':
   admin_groups     => 'admins,everyone',
   admin_auth_queue => '>',
   admin_auth_topic => '>',
+  webconsole       => true,
 }
 ```

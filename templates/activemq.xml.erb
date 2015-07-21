@@ -79,4 +79,7 @@
     </transportConnectors>
 
   </broker>
+  
+<% if @webconsole == true %>  <import resource="jetty.xml"/><% end %>
+<% end -%>
 </beans>

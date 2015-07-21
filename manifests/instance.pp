@@ -20,7 +20,9 @@ define activemq::instance(
   $admin_auth_queue  = '>',
   $admin_auth_topic  = '>',
   $authentication_enabled = true,
-  $authorization_enabled  = true
+  $authorization_enabled  = true, 
+  
+  $webconsole             = false,
 ) {
 
   if $instance_name != '' {
@@ -40,7 +42,6 @@ define activemq::instance(
   } else {
     $real_user_auth_topic = $user_auth_topic
   }
-
 
   $instance_path = "/etc/activemq/instances-available/${real_name}"
   $instance_enabled_path = "/etc/activemq/instances-enabled/${real_name}"
@@ -70,6 +71,14 @@ define activemq::instance(
     ensure  => present,
     content => template('activemq/credentials.properties.erb'),
     require => File[$instance_path],
+  }
+  
+   if $webconsole {
+    file {"${instance_path}/jetty.xml":
+      ensure  => present,
+      content => template('activemq/jetty.xml.erb'),
+      require => File[$instance_path],
+    }
   }
 
   file { $instance_enabled_path:
