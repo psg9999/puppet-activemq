@@ -95,26 +95,10 @@ define activemq::instance(
       group   => 'activemq',
     }
     
-    file {"${install_path}/lib/web":
+    file {"${install_path}/lib":
       ensure  => present,
       source  => "puppet:///modules/activemq/web",
       recurse => true,
-      owner   => 'activemq',
-      group   => 'activemq',
-      require => File[$install_path],
-    }
-    
-    file {"${install_path}/lib/activemq-console.jar":
-      ensure  => present,
-      source  => "puppet:///modules/activemq/activemq-console-5.4.2.jar",
-      owner   => 'activemq',
-      group   => 'activemq',
-      require => File[$install_path],
-    }
-    
-    file {"${install_path}/lib/activemq-web.jar":
-      ensure  => present,
-      source  => "puppet:///modules/activemq/activemq-web-5.4.2.jar",
       owner   => 'activemq',
       group   => 'activemq',
       require => File[$install_path],
