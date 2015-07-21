@@ -17,12 +17,11 @@ define activemq::instance(
   $admin_name       = 'admin',
   $admin_password   = 'admin',
   $admin_groups     = 'admins,everyone',
-  $admin_auth_queue  = '>',
-  $admin_auth_topic  = '>',
+  $admin_auth_queue = '>',
+  $admin_auth_topic = '>',
   $authentication_enabled = true,
-  $authorization_enabled  = true, 
-  
   $webconsole             = false,
+  $use_persistence        = true,
 ) {
 
   if $instance_name != '' {
