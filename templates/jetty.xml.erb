@@ -21,7 +21,7 @@
 
     <bean id="securityLoginService" class="org.eclipse.jetty.security.HashLoginService">
         <property name="name" value="ActiveMQRealm" />
-    <property name="config" value="/etc/activemq/jetty-realm.properties" />
+    <property name="config" value="<%= @instance_path -%>/jetty-realm.properties" />
     </bean>
 
     <bean id="securityConstraint" class="org.eclipse.jetty.http.security.Constraint">
@@ -49,22 +49,22 @@
                     <list>
                         <bean class="org.eclipse.jetty.webapp.WebAppContext">
                             <property name="contextPath" value="/admin" />
-                <property name="resourceBase" value="/var/lib/activemq/webapps/admin" />
+                <property name="resourceBase" value="<%= @install_path -%>/webapps/admin" />
                             <property name="logUrlOnStart" value="true" />
                         </bean>
                         <bean class="org.eclipse.jetty.webapp.WebAppContext">
                             <property name="contextPath" value="/camel" />
-                <property name="resourceBase" value="/var/lib/activemq/webapps/camel" />
+                <property name="resourceBase" value="<%= @install_path -%>/webapps/camel" />
                             <property name="logUrlOnStart" value="true" />
                         </bean>
                         <bean class="org.eclipse.jetty.webapp.WebAppContext">
                             <property name="contextPath" value="/demo" />
-                <property name="resourceBase" value="/var/lib/activemq/webapps/demo" />
+                <property name="resourceBase" value="<%= @install_path -%>/webapps/demo" />
                             <property name="logUrlOnStart" value="true" />
                         </bean>
                         <bean class="org.eclipse.jetty.webapp.WebAppContext">
                             <property name="contextPath" value="/fileserver" />
-                <property name="resourceBase" value="/var/lib/activemq/webapps/fileserver" />
+                <property name="resourceBase" value="<%= @install_path -%>/webapps/fileserver" />
                             <property name="logUrlOnStart" value="true" />
                             <property name="parentLoaderPriority" value="true" />
                         </bean>
@@ -75,7 +75,7 @@
                                     <value>index.html</value>
                                 </list>
                             </property>
-                <property name="resourceBase" value="/var/lib/activemq/webapps/" />
+                <property name="resourceBase" value="<%= @install_path -%>/webapps/" />
                         </bean>
                         <bean id="defaultHandler" class="org.eclipse.jetty.server.handler.DefaultHandler">
                             <property name="serveIcon" value="false" />

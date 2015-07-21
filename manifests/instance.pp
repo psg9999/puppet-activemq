@@ -49,8 +49,9 @@ define activemq::instance(
     notify => Service['activemq'],
   }
 
-  file { $instance_path:
-    ensure  => directory,
+  file {"${instance_path}":
+    ensure => 'link',
+    target => '/var/lib/activemq/activemq/conf/',
     require => Package['activemq'],
   }
 
@@ -78,6 +79,29 @@ define activemq::instance(
       content => template('activemq/jetty.xml.erb'),
       require => File[$instance_path],
     }
+    
+    file {"${instance_path}/jetty-realm.properties":
+      ensure  => present,
+      content => "puppet:///activemq/jetty-realm.properties",
+      require => File[$instance_path],
+    }
+    
+    $install_path = "/usr/share/activemq"
+    
+    file {"${install_path}/lib/web":
+      ensure  => present,
+      source  => "puppet:///activemq/web",
+      recurse => true,
+      require => File[$install_path],
+    }
+    
+    file {"${install_path}/webapps":
+      ensure  => present,
+      source  => "puppet:///activemq/webapps",
+      recurse => true,
+      require => File[$install_path],
+    }  
+    
   }
 
   file { $instance_enabled_path:

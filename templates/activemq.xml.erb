@@ -15,7 +15,7 @@
     </property>
   </bean>
 
-  <broker xmlns="http://activemq.apache.org/schema/core" brokerName="<%= @real_name %>-broker" useJmx="true" <% if @use_persistence %>persistence="true"<% end %> >
+  <broker xmlns="http://activemq.apache.org/schema/core" brokerName="<%= @real_name %>-broker" useJmx="true" persistence="<%= @use_persistence -%>" >
     <destinationPolicy>
       <policyMap>
         <policyEntries>
@@ -27,7 +27,7 @@
       <managementContext createConnector="false"/>
     </managementContext>
 
-    <% if @use_persistence %>
+    <% if @use_persistence == true %>
     <persistenceAdapter>
       <kahaDB directory="${activemq.base}/data/kahadb"/>
     </persistenceAdapter>
