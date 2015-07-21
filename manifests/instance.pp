@@ -74,6 +74,8 @@ define activemq::instance(
   }
   
    if $webconsole {
+    $install_path = "/usr/share/activemq"
+     
     file {"${instance_path}/jetty.xml":
       ensure  => present,
       content => template('activemq/jetty.xml.erb'),
@@ -86,16 +88,18 @@ define activemq::instance(
       require => File[$instance_path],
     }
     
-    $install_path = "/usr/share/activemq"
-    
     file {"${install_path}":
       ensure  => directory,
+      owner   => 'activemq',
+      group   => 'activemq',
     }
     
     file {"${install_path}/lib/web":
       ensure  => present,
       source  => "puppet:///modules/activemq/web",
       recurse => true,
+      owner   => 'activemq',
+      group   => 'activemq',
       require => File[$install_path],
     }
     
@@ -103,6 +107,8 @@ define activemq::instance(
       ensure  => present,
       source  => "puppet:///modules/activemq/webapps",
       recurse => true,
+      owner   => 'activemq',
+      group   => 'activemq',
       require => File[$install_path],
     }  
     
@@ -110,7 +116,7 @@ define activemq::instance(
 
   file { $instance_enabled_path:
     ensure  => link,
-    target  => $instance_path,
+    target  => $instance_path
     require => [
       File["${instance_path}/activemq.xml"],
       File["${instance_path}/log4j.properties"],
