@@ -22,7 +22,8 @@ describe 'activemq module' do
         admin_auth_queue       => '>',
         admin_auth_topic       => '>',
         authentication_enabled => true,
-        authorization_enabled  => true
+        authorization_enabled  => true,
+        use_persistence        => false,
       }
     EOS
   }
