@@ -103,7 +103,7 @@ define activemq::instance(
       require => File[$install_path],
     }
     
-    file {"${install_path}/lib/activemq-console":
+    file {"${install_path}/lib/activemq-console.jar":
       ensure  => present,
       source  => "puppet:///modules/activemq/activemq-console-5.4.2.jar",
       owner   => 'activemq',
@@ -111,7 +111,7 @@ define activemq::instance(
       require => File[$install_path],
     }
     
-    file {"${install_path}/lib/activemq-web":
+    file {"${install_path}/lib/activemq-web.jar":
       ensure  => present,
       source  => "puppet:///modules/activemq/activemq-web-5.4.2.jar",
       owner   => 'activemq',
