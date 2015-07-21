@@ -88,6 +88,10 @@ define activemq::instance(
     
     $install_path = "/usr/share/activemq"
     
+    file {"${install_path}":
+      ensure  => directory,
+    }
+    
     file {"${install_path}/lib/web":
       ensure  => present,
       source  => "puppet:///activemq/web",
