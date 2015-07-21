@@ -116,7 +116,7 @@ define activemq::instance(
 
   file { $instance_enabled_path:
     ensure  => link,
-    target  => $instance_path
+    target  => $instance_path,
     require => [
       File["${instance_path}/activemq.xml"],
       File["${instance_path}/log4j.properties"],
