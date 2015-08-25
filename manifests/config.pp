@@ -10,7 +10,7 @@ class activemq::config {
     notify  => Service['activemq'],
   }
 
-  file { ['/var/lib/activemq', '/etc/activemq', '/usr/share/activemq']:
+  file { ['/var/lib/activemq', '/etc/activemq']:
     ensure  => directory,
     owner   => 'activemq',
     group   => 'activemq',
